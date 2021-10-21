@@ -1,3 +1,5 @@
+package model;
+
 public abstract class AbstractPerson implements HumanInterface {
     private String name;
 

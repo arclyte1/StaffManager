@@ -1,3 +1,7 @@
+package gui;
+
+import controller.Controller;
+
 import javax.swing.*;
 import javax.swing.text.MaskFormatter;
 import java.awt.*;
@@ -18,12 +22,14 @@ public class EmployeeAddForm extends Container {
     private JRadioButton otherRadioButton;
     private JButton addButton;
     private ButtonGroup genderGroup;
+    private Controller controller;
 
     public EmployeeAddForm() {
         $$$setupUI$$$();
         maleRadioButton.setActionCommand("Male");
         femaleRadioButton.setActionCommand("Female");
         otherRadioButton.setActionCommand("Other");
+        controller = new Controller();
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -65,6 +71,11 @@ public class EmployeeAddForm extends Container {
                     JOptionPane.showMessageDialog(new JFrame(), errMessage, "Input information error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
+
+                Employee employee = new Employee(nameText, occupationText, age, phone, position, gender);
+                controller.addEmployee(employee);
+
+                JOptionPane.showMessageDialog(new JFrame(), employee.toString(), "Input information OK", JOptionPane.INFORMATION_MESSAGE);
             }
         });
     }

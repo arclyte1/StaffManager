@@ -1,3 +1,4 @@
+package model;
 
 public class Employee extends AbstractPerson {
     private final String department;
